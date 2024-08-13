@@ -5,6 +5,9 @@ const userSlice = createSlice({
     initialState: {
         user:[
             
+        ],
+        items:[
+
         ]
     },
     reducers: {
@@ -15,8 +18,11 @@ const userSlice = createSlice({
             state.token=null;
 
         },
+        addtoitems:(state,action)=>{
+            state.items.push(action.payload);
+        },
     },
 });
 
-export const {setToken,removerToken}=userSlice.actions;
+export const {setToken,removerToken,addtoitems}=userSlice.actions;
 export default userSlice.reducer

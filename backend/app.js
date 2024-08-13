@@ -3,12 +3,15 @@ const app = express();
 const connection = require("./db");
 const userRouter = require("./Route/UserRoutes");
 const BookRouter = require("./Route/BookRoutes");
+const cors = require("cors")
 
 // Connect to the database
 connection();
 
+
 // Middleware to parse JSON
 app.use(express.json());
+app.use(cors())
 
 // Use the userRouter for routes starting with /api/users
 app.use("/api/users", userRouter);
