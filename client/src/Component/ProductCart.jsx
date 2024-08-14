@@ -2,16 +2,26 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import '../Styles/ProductCart.css';
 import { addtoitems } from '../redux/userSlice';
+import axios from 'axios';
+import { useSelector } from 'react-redux';
 
 const ProductCart = (props) => {
   const dispatch = useDispatch();
-
-  const handleAddToCart = () => {
+  const token = useSelector(state => state.user.token);
+  const handleAddToCart = async () => {
+    if(token){
+    const response=await axios.post("http://localhost:5000/api/cart/add", { productId: props.item._id,quantity:1 }, {
+      headers: {
+        'Authorization': `Bearer ${localStorage.getItem('token')}`
+    }
+  })
+  console.log('Added to Cart', response);
      dispatch(addtoitems(props.item));
      console.log(props.item);
     console.log('Added to Cart');
    
   }
+}
 
   return (
     <div className='product-container'>

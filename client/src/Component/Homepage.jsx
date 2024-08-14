@@ -1,8 +1,11 @@
 // src/components/Home.js
 import React from 'react';
 import '../Styles/Homepage.css';
+import { useSelector } from 'react-redux';
 
 const Homepage = () => {
+  const token=useSelector(state=>state.user.token);
+  console.log(token);
   return (
     <div className="home-container">
       <div className="hero-section">

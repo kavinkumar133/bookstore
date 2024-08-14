@@ -3,11 +3,13 @@ import React, { useState } from 'react';
 import '../Styles/Login.css';  // Ensure the path is correct
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import { useDispatch } from 'react-redux';
+import { setToken } from '../redux/userSlice';
 
 const Login =  () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-
+  const dispatch = useDispatch();
   const handleSubmit = async (e) => {
     e.preventDefault();
     // Handle login logic here
@@ -18,6 +20,9 @@ const Login =  () => {
          password
     });
     console.log(">>>",res);
+    localStorage.setItem('token', res.data.token);
+    dispatch(setToken(res.data.token));
+
     
     
 
