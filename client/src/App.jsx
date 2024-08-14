@@ -7,6 +7,7 @@ import Login from './Component/Login';
 import Register from './Component/Register';
 import Product from './Component/Product';
 import CartPage from './Component/CartPage';
+import Homepage from './Component/Homepage';
 import { Provider } from 'react-redux';
 import store from './redux/store';
 
@@ -17,7 +18,7 @@ function App() {
     <BrowserRouter>
         <Header />
         <Routes>
-          <Route path="/" element={<Header />} />
+          <Route path="/" element={<Homepage />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path='/product' element={<Product/>}/>
